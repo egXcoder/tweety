@@ -36,4 +36,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function following_me_users(){
+        return $this->belongsToMany(self::class,"user_followers","id","user_id");
+    }
+
+    public function i_follow_users(){
+        return $this->belongsToMany(self::class,"user_followers","id","follow_user_id");
+    }
+
+    public function tweets(){
+        return $this->hasMany(Tweet::class,"user_id","id");
+    }
 }
