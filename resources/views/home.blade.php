@@ -12,13 +12,13 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-lg">
         <div class="header mb-4">
             <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" class="img-fluid" width="80px">
             <p class="font-weight-bold d-inline-block">Tweety</p>
         </div>
         <div class="row">
-            <section id="navigation" class="col-md-3">
+            <section id="navigation" class="col-md-3 order-1 order-md-1">
                 <div class="d-flex flex-column">
                     <a class="my-2 font-weight-bold text-black" style="color:black;" href="">Home</a>
                     <a class="my-2 font-weight-bold text-black" style="color:black;" href="">Explore</a>
@@ -31,7 +31,7 @@
                     <button class="btn btn-primary">Tweet-a-roo!</button>
                 </div>
             </section>
-            <section id="main" class="col-md-6">
+            <section id="main" class="col-md-6 order-3 order-md-3">
                 <div class="border rounded p-2">
                     <form action="" method="post">
                         <textarea style="border: none" name="content" class="form-control rounded" cols="30" rows="7">What's up doc?</textarea>
@@ -68,7 +68,7 @@
                     @endfor
                 </div>
             </section>
-            <section id="friends" class="col-md-3">
+            <section id="friends" class="col-md-3 order-2 order-md-last">
                 <div class="bg-light rounded p-2">
                     <h4>Friends</h4>
                     <div class="d-flex flex-column">
