@@ -12,7 +12,7 @@ class TweetsSeeder extends Seeder
      */
     public function run()
     {
-        factory(Tweet::class,"create_tweet_with_existing_user",200)
+        factory(Tweet::class,200)
             ->create();
     }
 }

@@ -37,35 +37,34 @@
                         <textarea style="border: none" name="content" class="form-control rounded" cols="30" rows="7">What's up doc?</textarea>
                         <hr>
                         <div>
-                            <img class="img-fluid float-left" width="50px"
-                                src="https://frspros.com/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg">
+                            <img class="rounded-circle float-left" style="width: 50px;height:50px;"
+                                src="{{auth()->user()->image_url}}">
                             <button type="button" class="btn btn-primary float-right">Tweet-a-roo!</button>
                             <div class="clearfix"></div>
                         </div>
                     </form>
                 </div>
                 <div class="posts mt-4 border p-2">
-                    @for($i = 0; $i < 10; $i++)
-                    <div class="single-post row no-gutters">
-                        <div class="col-md-2">
-                            <img class="img-fluid float-left" width="50px"
-                                src="https://frspros.com/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg">
+                    @foreach($tweets as $tweet)
+                        <div class="tweet row no-gutters">
+                            <div class="col-md-2">
+                                <img class="img-fluid float-left rounded-circle" style="width:50px;height:50px;"
+                                    src="{{$tweet->user->image_url}}">
+                            </div>
+                            <div class="col-md-10">
+                                <h4>{{$tweet->user->name}} <span style="font-size:12px;">{{$tweet->created_at->diffForHumans()}}</span> </p>
+                                <p style="font-size: 1rem">{{$tweet->body}}</p>
+                            </div>
+                            <div style="font-size: 0.7rem;">
+                                <i class="far fa-thumbs-up fa-2x active mx-2"><span style="font-size: 1rem">23</span></i>
+                                <i class="far fa-thumbs-down fa-2x mx-2"><span style="font-size: 1rem">11</span></i>
+                            </div>
                         </div>
-                        <div class="col-md-10">
-                            <h4>Author Name <span>From Time</span> </p>
-                            <p style="font-size: 1rem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, 
-                                laboriosam! Ipsam, alias vel nobis mollitia, excepturi expedita iure tempora 
-                                ullam natus quisquam nemo omnis. Corporis cumque laboriosam nobis sunt asperiores.
-                            </p>
-                        </div>
-                        <div style="font-size: 0.7rem;">
-                            <i class="far fa-thumbs-up fa-2x active mx-2"><span style="font-size: 1rem">23</span></i>
-                            <i class="far fa-thumbs-down fa-2x mx-2"><span style="font-size: 1rem">11</span></i>
-                        </div>
-                    </div>
-                   
-                    <hr>
-                    @endfor
+                        @if($loop->last)
+                            @continue
+                        @endif
+                        <hr>
+                    @endforeach
                 </div>
             </section>
             <section id="friends" class="col-md-3 order-2 order-md-last">
@@ -78,6 +77,17 @@
                                 <p class="my-auto mx-1">Ahmed Ibrahim</p>
                             </div>
                         @endfor
+                    </div>
+                </div>
+                <div class="bg-light rounded p-2 my-2">
+                    <h4>Following</h4>
+                    <div class="d-flex flex-column">
+                        @foreach($following as $single_following)
+                        <div class="d-flex my-1">
+                            <img class="rounded-circle" style="width:40px;height:40px;" src="{{$single_following->image_url}}">
+                            <p class="my-auto mx-1">{{$single_following->name}}</p>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </section>

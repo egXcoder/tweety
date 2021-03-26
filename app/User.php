@@ -37,12 +37,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function following_me_users(){
-        return $this->belongsToMany(self::class,"user_followers","id","user_id");
+    public function following(){
+        return $this->belongsToMany(self::class,"user_followers","user_id","follow_user_id");
     }
 
-    public function i_follow_users(){
-        return $this->belongsToMany(self::class,"user_followers","id","follow_user_id");
+    public function followers(){
+        return $this->belongsToMany(self::class,"user_followers","follow_user_id","user_id");
     }
 
     public function tweets(){
