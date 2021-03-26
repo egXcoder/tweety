@@ -14,7 +14,8 @@
 <body>
     <div class="container">
         <div class="header mb-4">
-            <img src="https://static.wikia.nocookie.net/animaniacs/images/7/79/Tweety.png" class="img-fluid" width="80px">
+            <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" class="img-fluid" width="80px">
+            <p class="font-weight-bold d-inline-block">Tweety</p>
         </div>
         <div class="row">
             <section id="navigation" class="col-md-3">
@@ -31,51 +32,52 @@
                 </div>
             </section>
             <section id="main" class="col-md-6">
-                <form action="" method="post">
-                    <textarea name="content" class="form-control rounded" cols="30" rows="7">What's up doc?</textarea>
-                    <hr>
-                    <div>
-                        <img class="img-fluid float-left" width="50px"
-                            src="https://frspros.com/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg">
-                        <button type="button" class="btn btn-primary float-right">Tweet-a-roo!</button>
-                    </div>
-                </form>
-
-                <div class="posts">
-                    <div class="single-post row">
+                <div class="border rounded p-2">
+                    <form action="" method="post">
+                        <textarea style="border: none" name="content" class="form-control rounded" cols="30" rows="7">What's up doc?</textarea>
+                        <hr>
+                        <div>
+                            <img class="img-fluid float-left" width="50px"
+                                src="https://frspros.com/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg">
+                            <button type="button" class="btn btn-primary float-right">Tweet-a-roo!</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="posts mt-4 border p-2">
+                    @for($i = 0; $i < 10; $i++)
+                    <div class="single-post row no-gutters">
                         <div class="col-md-2">
                             <img class="img-fluid float-left" width="50px"
                                 src="https://frspros.com/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg">
                         </div>
                         <div class="col-md-10">
-                            <h4>Author Name <sh4an class="text-light">From Time</span> </p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, 
-                                    laboriosam! Ipsam, alias vel nobis mollitia, excepturi expedita iure tempora 
-                                    ullam natus quisquam nemo omnis. Corporis cumque laboriosam nobis sunt asperiores.
-                                </p>
+                            <h4>Author Name <span>From Time</span> </p>
+                            <p style="font-size: 1rem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, 
+                                laboriosam! Ipsam, alias vel nobis mollitia, excepturi expedita iure tempora 
+                                ullam natus quisquam nemo omnis. Corporis cumque laboriosam nobis sunt asperiores.
+                            </p>
                         </div>
-                        <hr>
+                        <div style="font-size: 0.7rem;">
+                            <i class="far fa-thumbs-up fa-2x active mx-2"><span style="font-size: 1rem">23</span></i>
+                            <i class="far fa-thumbs-down fa-2x mx-2"><span style="font-size: 1rem">11</span></i>
+                        </div>
                     </div>
+                   
+                    <hr>
+                    @endfor
                 </div>
             </section>
             <section id="friends" class="col-md-3">
-                <div class="bg-light rounded">
+                <div class="bg-light rounded p-2">
                     <h4>Friends</h4>
                     <div class="d-flex flex-column">
-                        <div class="d-flex my-1">
-                            <img class="img-fluid" width="50px" src="https://frspros.com/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg">
-                            <p class="my-auto mx-1">Ahmed Ibrahim</p>
-                        </div>
-                        <div class="d-flex my-1">
-                            <img class="img-fluid" width="50px"
-                                src="https://frspros.com/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg">
-                            <p class="my-auto mx-1">Ahmed Ibrahim</p>
-                        </div>
-                        <div class="d-flex my-1">
-                            <img class="img-fluid" width="50px"
-                                src="https://frspros.com/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg">
-                            <p class="my-auto mx-1">Ahmed Ibrahim</p>
-                        </div>
+                        @for($i=0;$i<4;$i++)
+                            <div class="d-flex my-1">
+                                <img class="img-fluid" width="50px" src="https://frspros.com/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg">
+                                <p class="my-auto mx-1">Ahmed Ibrahim</p>
+                            </div>
+                        @endfor
                     </div>
                 </div>
             </section>
