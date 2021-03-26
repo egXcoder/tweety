@@ -34,7 +34,7 @@
             <section id="main" class="col-md-6 order-3 order-md-3">
                 <div class="border rounded p-2">
                     <form action="" method="post">
-                        <textarea style="border: none" name="content" class="form-control rounded" cols="30" rows="7">What's up doc?</textarea>
+                        <textarea style="border: none" name="content" class="form-control rounded" cols="30" rows="7" placeholder="What's up doc?"></textarea>
                         <hr>
                         <div>
                             <img class="rounded-circle float-left" style="width: 50px;height:50px;"
