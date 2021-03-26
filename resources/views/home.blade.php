@@ -32,7 +32,7 @@
                 </div>
             </section>
             <section id="main" class="col-md-6 order-3 order-md-3">
-                <div class="border rounded shadow p-2">
+                <div class="border rounded shadow-sm p-2">
                     <form action="{{route('tweets.store')}}" method="post">
                         @csrf
                         <textarea style="border: none" name="body" class="form-control rounded" cols="30" rows="7" placeholder="What's up doc?">{{old('body')}}</textarea>
@@ -98,6 +98,7 @@
     </div>
 
     <script src="{{mix('js/app.js')}}"></script>
+    @include('components.toastr')
 </body>
 
 </html>
