@@ -21,6 +21,7 @@
         "bootstrap": "^4.6.0"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.3"
+        "@fortawesome/fontawesome-free": "^5.15.3",
+        "toastr": "^2.1.4"
     }
 }
