@@ -32,15 +32,18 @@
                 </div>
             </section>
             <section id="main" class="col-md-6 order-3 order-md-3">
-                <div class="border rounded p-2">
-                    <form action="" method="post">
-                        <textarea style="border: none" name="content" class="form-control rounded" cols="30" rows="7" placeholder="What's up doc?"></textarea>
+                <div class="border rounded shadow p-2">
+                    <form action="{{route('tweets.store')}}" method="post">
+                        @csrf
+                        <textarea style="border: none" name="body" class="form-control rounded" cols="30" rows="7" placeholder="What's up doc?">{{old('body')}}</textarea>
+                        @error('body')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
                         <hr>
-                        <div>
+                        <div class="clearfix">
                             <img class="rounded-circle float-left" style="width: 50px;height:50px;"
                                 src="{{auth()->user()->image_url}}">
-                            <button type="button" class="btn btn-primary float-right">Tweet-a-roo!</button>
-                            <div class="clearfix"></div>
+                            <button type="submit" class="btn btn-primary float-right">Tweet-a-roo!</button>
                         </div>
                     </form>
                 </div>
@@ -52,7 +55,7 @@
                                     src="{{$tweet->user->image_url}}">
                             </div>
                             <div class="col-md-10">
-                                <h4>{{$tweet->user->name}} <span style="font-size:12px;">{{$tweet->created_at->diffForHumans()}}</span> </p>
+                                <h4>{{$tweet->user->name}} <span class="text-muted" style="font-size:12px;">{{$tweet->created_at->diffForHumans()}}</span> </p>
                                 <p style="font-size: 1rem">{{$tweet->body}}</p>
                             </div>
                             <div style="font-size: 0.7rem;">

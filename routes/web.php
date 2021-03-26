@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->middleware('auth');
+Route::post('/tweet','TweetsController@store')->middleware('auth')->name('tweets.store');
 
 Auth::routes();
 
