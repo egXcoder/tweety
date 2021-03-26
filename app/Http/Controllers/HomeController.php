@@ -26,11 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('home',[
-            'tweets' => Tweet::whereIn('user_id',auth()->user()->following->pluck('id'))
-                        ->with('user')
-                        ->latest()
-                        ->take(20)
-                        ->get(),
+            'tweets' => auth()->user()->getFollowingTweets(),
             'following'=> auth()->user()->following,
         ]);
     }

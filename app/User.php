@@ -37,6 +37,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getFollowingTweets(){
+        return Tweet::whereIn('user_id',$this->following->pluck('id'))
+                        ->with('user')
+                        ->latest()
+                        ->get();
+    }
+
     public function following(){
         return $this->belongsToMany(self::class,"user_followers","user_id","follow_user_id");
     }
