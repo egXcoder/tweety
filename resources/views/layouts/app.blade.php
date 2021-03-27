@@ -14,8 +14,10 @@
 <body>
     <div class="container-fluid">
         <div class="header mb-4">
-            <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" class="img-fluid" width="80px">
-            <p class="font-weight-bold d-inline-block">Tweety</p>
+            <a class="text-reset text-decoration-none" href="{{route('home')}}">
+                <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" class="img-fluid" width="80px">
+                <p class="font-weight-bold d-inline-block">Tweety</p>
+            </a>
         </div>
         @yield('content')
     </div>
