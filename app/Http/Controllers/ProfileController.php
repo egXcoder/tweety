@@ -11,6 +11,13 @@ class ProfileController extends Controller
         return view('profile.show', ['user'=>$user]);
     }
 
+    public function edit(User $user)
+    {
+        $this->authorize('edit', $user);
+        
+        return view('profile.edit');
+    }
+
     public function toggleFollow(User $user)
     {
         if (auth()->user()->isFollowing($user)) {
@@ -18,7 +25,7 @@ class ProfileController extends Controller
         } else {
             auth()->user()->follow($user);
         }
-        
+
         return back();
     }
 }

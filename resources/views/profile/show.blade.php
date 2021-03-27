@@ -19,7 +19,9 @@
         </div>
 
         <div class="d-flex align-items-center">
-            <a class="btn btn-light shadow-sm px-4">Edit Profile</a>
+            @can('edit',$user)
+                <a href="{{route('profile.edit',$user->identifier)}}" class="btn btn-light shadow-sm px-4">Edit Profile</a>
+            @endcan
             <form action="{{route('profile.toggle_follow',$user->identifier)}}" method="POST">
                 @csrf
                 @if(auth()->user()->isFollowing($user))
