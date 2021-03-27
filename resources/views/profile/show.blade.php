@@ -18,7 +18,7 @@
             <h2>{{$user->label}}</h2>
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex align-items-center">
             <a class="btn btn-light shadow-sm px-4">Edit Profile</a>
             <form action="{{route('profile.toggle_follow',$user->identifier)}}" method="POST">
                 @csrf
