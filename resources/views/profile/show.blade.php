@@ -22,6 +22,8 @@
             @can('edit',$user)
                 <a href="{{route('profile.edit',$user->identifier)}}" class="btn btn-light shadow-sm px-4">Edit Profile</a>
             @endcan
+
+            @unless(auth()->user()->is($user))
             <form action="{{route('profile.toggle_follow',$user->identifier)}}" method="POST">
                 @csrf
                 @if(auth()->user()->isFollowing($user))
@@ -30,6 +32,7 @@
                     <button class="btn btn-primary px-4">Follow Me</button>
                 @endif
             </form>
+            @endunless
         </div>
     </div>
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
