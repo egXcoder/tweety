@@ -1,8 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.home_layout')
 
 
-@section('content')
-
+@section('main')
 <header >
     <div class="position-relative">
         <img src="https://d25yuvogekh0nj.cloudfront.net/2019/08/Twitter-Banner-Size-Guide-blog-banner-1250x500.png"

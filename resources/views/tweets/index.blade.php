@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.home_layout')
 
-@section('content')
+@section('main')
     @include('_new_tweet_form')
     @include('_tweets')
 @endsection

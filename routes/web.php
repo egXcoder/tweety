@@ -11,12 +11,13 @@
 |
 */
 
+Auth::routes();
+
 Route::middleware('auth')->group(function(){
     Route::get('/tweets', 'TweetsController@index')->name('home');
     Route::post('/tweet','TweetsController@store')->name('tweets.store');
     Route::get('/profile/{user}','ProfileController@show')->name('profile.show');
 });
 
-Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');

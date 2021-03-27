@@ -17,18 +17,7 @@
             <img src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png" class="img-fluid" width="80px">
             <p class="font-weight-bold d-inline-block">Tweety</p>
         </div>
-        <div class="row">
-            <section id="navigation" class="col-md-2 order-1 order-md-1">
-                @include('_navigation')
-            </section>
-            <section id="main" class="col-md-8 order-3 order-md-3">
-                @yield('content')
-            </section>
-            <section class="col-md-2 order-2 order-md-last">
-                @include('_friends')
-                @include('_following')
-            </section>
-        </div>
+        @yield('content')
     </div>
 
     <script src="{{mix('js/app.js')}}"></script>
