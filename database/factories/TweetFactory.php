@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Tweet::class, function (Faker $faker) {
     return [
-        "body"=>$faker->sentence,
+        "body"=>$faker->paragraph(2),
         "user_id"=>User::inRandomOrder()->first(),
         "created_at"=>$faker->dateTimeThisMonth
     ];

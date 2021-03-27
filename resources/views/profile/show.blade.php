@@ -14,8 +14,8 @@
 
     <div class="d-flex justify-content-between mt-2">
         <div>
-            <h2>{{$user->name}}</h2>
-            <h2>{{$user->label}}</h2>
+            <h2>{{$user->name}} <span class="text-muted" style="font-size: 1rem;">Joined From
+                    {{$user->created_at->diffForHumans()}}</span></h2>
         </div>
 
         <div class="d-flex align-items-center">
