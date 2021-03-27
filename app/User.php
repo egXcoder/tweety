@@ -73,4 +73,9 @@ class User extends Authenticatable
     public function tweets(){
         return $this->hasMany(Tweet::class,"user_id","id");
     }
+
+    public function getRouteKeyName()
+    {
+        return 'identifier';
+    }
 }

@@ -2,13 +2,17 @@
     @foreach($tweets as $tweet)
     <div class="tweet row no-gutters">
         <div class="col-md-2">
-            <img class="img-fluid float-left rounded-circle" style="width:50px;height:50px;"
-                src="{{$tweet->user->image_url}}">
+            <a href="{{route('profile.show',$tweet->user)}}">
+                <img class="img-fluid float-left rounded-circle" style="width:50px;height:50px;"
+                    src="{{$tweet->user->image_url}}">
+            </a>
         </div>
         <div class="col-md-10">
-            <h4>{{$tweet->user->name}} <span class="text-muted"
-                    style="font-size:12px;">{{$tweet->created_at->diffForHumans()}}</span> </p>
-                <p style="font-size: 1rem">{{$tweet->body}}</p>
+            <a href="{{route('profile.show',$tweet->user)}}" class="text-reset text-decoration-none">
+                <h4>{{$tweet->user->name}} <span class="text-muted"
+                        style="font-size:12px;">{{$tweet->created_at->diffForHumans()}}</span> </p>
+            </a>
+            <p style="font-size: 1rem">{{$tweet->body}}</p>
         </div>
         <div style="font-size: 0.7rem;" class="impressions">
             <i class="far fa-thumbs-up fa-2x active mx-1 like"><span
