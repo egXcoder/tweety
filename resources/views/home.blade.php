@@ -58,12 +58,12 @@
                                 <h4>{{$tweet->user->name}} <span class="text-muted" style="font-size:12px;">{{$tweet->created_at->diffForHumans()}}</span> </p>
                                 <p style="font-size: 1rem">{{$tweet->body}}</p>
                             </div>
-                            <div style="font-size: 0.7rem;">
-                                <i class="far fa-thumbs-up fa-2x active mx-1"><span style="font-size: 1rem">{{$tweet->onlyImpressions('like')->count() ?? 0}}</span></i>
-                                <i class="far fa-thumbs-down fa-2x mx-1"><span style="font-size: 1rem">{{$tweet->onlyImpressions('dislike')->count() ?? 0}}</span></i>
-                                <i class="far fa-heart fa-2x mx-1"><span style="font-size: 1rem">{{$tweet->onlyImpressions('love')->count() ?? 0}}</span></i>
-                                <i class="far fa-laugh-beam fa-2x mx-1"><span style="font-size: 1rem">{{$tweet->onlyImpressions('laugh')->count() ?? 0}}</span></i>
-                                <i class="far fa-sad-tear fa-2x mx-1"><span style="font-size: 1rem">{{$tweet->onlyImpressions('cry')->count() ?? 0}}</span></i>
+                            <div style="font-size: 0.7rem;" class="impressions">
+                                <i class="far fa-thumbs-up fa-2x active mx-1 like"><span style="font-size: 1rem">{{$tweet->onlyImpressions('like')->count() ?? 0}}</span></i>
+                                <i class="far fa-thumbs-down fa-2x mx-1 dislike"><span style="font-size: 1rem">{{$tweet->onlyImpressions('dislike')->count() ?? 0}}</span></i>
+                                <i class="far fa-heart fa-2x mx-1 love"><span style="font-size: 1rem">{{$tweet->onlyImpressions('love')->count() ?? 0}}</span></i>
+                                <i class="far fa-laugh-beam fa-2x mx-1 laugh"><span style="font-size: 1rem">{{$tweet->onlyImpressions('laugh')->count() ?? 0}}</span></i>
+                                <i class="far fa-sad-tear fa-2x mx-1 cry"><span style="font-size: 1rem">{{$tweet->onlyImpressions('cry')->count() ?? 0}}</span></i>
                             </div>
                         </div>
                         @if($loop->last)

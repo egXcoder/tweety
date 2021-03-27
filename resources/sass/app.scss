@@ -4,3 +4,29 @@ $primary : #1da1f2;
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
 @import "~toastr";
+
+
+.impressions{
+    i{
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+    i:hover{
+        transform:translateY(-2px);
+    }
+    i.like:hover{
+        color:$primary;
+    }
+    i.dislike:hover{
+        color:#4c0303;
+    }
+    i.love:hover{
+        color:#ef3939;
+    }
+    i.laugh:hover{
+        color:#ffc107;
+    }
+    i.cry:hover{
+        color:#ffc107;
+    }
+}
