@@ -24,7 +24,7 @@ class UserPolicy
         return $logged_user->is($userToOperateOn);
     }
 
-    public function follow(User $logged_user,User $userToOperateOn)
+    public function follow_or_unfollow(User $logged_user,User $userToOperateOn)
     {
         return $logged_user->isNot($userToOperateOn);
     }

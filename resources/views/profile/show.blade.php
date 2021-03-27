@@ -23,7 +23,7 @@
             <a href="{{route('profile.edit',$user->identifier)}}" class="btn btn-light shadow-sm px-4">Edit Profile</a>
             @endcan
 
-            @can('follow',$user)
+            @can('follow_or_unfollow',$user)
             <form action="{{route('profile.toggle_follow',$user->identifier)}}" method="POST">
                 @csrf
                 @if(auth()->user()->isFollowing($user))
