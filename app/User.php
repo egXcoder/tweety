@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function getFollowingTweets(){
         return Tweet::whereIn('user_id',array_merge($this->following->pluck('id')->toArray(),[auth()->id()]))
-                        ->with('user')
+                        ->with(['user','impressions'])
                         ->latest()
                         ->get();
     }
