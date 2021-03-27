@@ -15,7 +15,7 @@
 </div>
 
 <hr>
-<form action="" method="POST">
+<form action="{{route('profile.update',auth()->user()->identifier)}}" method="POST" enctype="multipart/form-data">
     @method('put')
     @csrf
     <h3>Update Profile</h3>

@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/profile/{user}','ProfileController@show')->name('profile.show');
     Route::post('/profile/{user}/toggle-follow','ProfileController@toggleFollow')->name('profile.toggle_follow');
     Route::get('/profile/{user}/edit','ProfileController@edit')->name('profile.edit');
+    Route::put('/profile/{user}','ProfileController@update')->name('profile.update');
 });
 
 

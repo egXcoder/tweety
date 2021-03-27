@@ -14,9 +14,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -61,6 +59,26 @@ class User extends Authenticatable
     protected static function isProfileIdUnique($identifier)
     {
         return User::where('identifier', $identifier)->count()==0;
+    }
+
+    public function getImageUrlAttribute($value){
+        if($this->isUrl($value)){
+            return $value;
+        }
+
+        return asset("storage/$value");
+    }
+
+    public function getCoverUrlAttribute($value){
+        if($this->isUrl($value)){
+            return $value;
+        }
+
+        return asset("storage/$value");
+    }
+
+    protected function isUrl($value){
+        return filter_var($value, FILTER_VALIDATE_URL);
     }
 
     public function following()

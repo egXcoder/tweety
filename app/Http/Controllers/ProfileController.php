@@ -18,10 +18,28 @@ class ProfileController extends Controller
         return view('profile.edit');
     }
 
+    public function update(User $user){
+        $this->authorize('edit',$user);
+
+        request()->validate([
+            'image'=>'image|dimensions:min-width=300,min-height:300',
+            'cover'=>'image|dimensions:min-width=800,min-height:400',
+            'description'=>'string'
+        ]);
+
+        $user->update([
+            'image_url'=> request('image')->store('avatars'),
+            'cover_url'=> request('cover')->store('covers'),
+            'description'=> request('description')
+        ]);
+
+        return back()->with('success','Profile Updated Successfully');
+    }
+
     public function toggleFollow(User $user)
     {
         $this->authorize('follow_or_unfollow',$user);
-        
+
         if (auth()->user()->isFollowing($user)) {
             auth()->user()->unfollow($user);
         } else {
