@@ -7,6 +7,19 @@ use Illuminate\Http\Request;
 
 class TweetsController extends Controller
 {
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home',[
+            'tweets' => auth()->user()->getFollowingTweets(),
+            'following'=> auth()->user()->following,
+        ]);
+    }
+    
     public function store(){
         $validated = request()->validate([
             "body"=>'required|string|max:255',
