@@ -75,16 +75,22 @@ class User extends Authenticatable
 
     public function isFollowing(User $user)
     {
-        return $this->following->contains(function ($following_user) use ($user) {
-            return $following_user->id == $user->id;
-        });
+        return $this->following->contains($user);
     }
 
     public function isFollower(User $user)
     {
-        return $this->followers->contains(function ($following_user) use ($user) {
-            return $following_user->id == $user->id;
-        });
+        return $this->followers->contains($user);
+    }
+
+    public function follow(User $user)
+    {
+        $this->following()->attach($user->id);
+    }
+
+    public function unfollow(User $user)
+    {
+        $this->following()->detach($user->id);
     }
 
     public function tweets()

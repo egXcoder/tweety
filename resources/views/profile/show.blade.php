@@ -2,11 +2,11 @@
 
 
 @section('main')
-<header >
+<header>
     <div class="position-relative">
         <img src="https://d25yuvogekh0nj.cloudfront.net/2019/08/Twitter-Banner-Size-Guide-blog-banner-1250x500.png"
             style="width:100%;height:300px" alt="">
-        
+
         <div class="position-absolute" style="left:50%;transform:translateX(-50%);top:50%;">
             <img class="rounded-circle" src="{{$user->image_url}}" style="width:200px;height:200px;" alt="">
         </div>
@@ -17,10 +17,17 @@
             <h2>{{$user->name}}</h2>
             <h2>{{$user->label}}</h2>
         </div>
-    
-        <div>
+
+        <div class="d-flex">
             <a class="btn btn-light shadow-sm px-4">Edit Profile</a>
-            <a class="btn btn-primary px-4">Follow Me</a>
+            <form action="{{route('profile.toggle_follow',$user->identifier)}}" method="POST">
+                @csrf
+                @if(auth()->user()->isFollowing($user))
+                    <button class="btn btn-primary px-4">UnFollow Me</button>
+                @else
+                    <button class="btn btn-primary px-4">Follow Me</button>
+                @endif
+            </form>
         </div>
     </div>
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -29,7 +36,7 @@
 </header>
 
 @include('_tweets',[
-    'tweets'=>$user->tweets
+'tweets'=>$user->tweets
 ])
 
 @endsection
