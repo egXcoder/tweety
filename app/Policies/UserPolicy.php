@@ -19,7 +19,13 @@ class UserPolicy
         //
     }
 
-    public function edit(User $user){
-        return $user->is(auth()->user());
+    public function edit(User $logged_user,User $userToOperateOn)
+    {
+        return $logged_user->is($userToOperateOn);
+    }
+
+    public function follow(User $logged_user,User $userToOperateOn)
+    {
+        return $logged_user->isNot($userToOperateOn);
     }
 }
