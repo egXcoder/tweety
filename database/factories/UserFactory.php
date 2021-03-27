@@ -25,6 +25,6 @@ $factory->define(User::class, function (Faker $faker) {
         'image_url'=>'https://i.pravatar.cc/600?u='.Str::random(10),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
-        'profile_id'=> User::generateUniqueId(), 
+        'identifier'=> User::generateUniqueId(), 
     ];
 });

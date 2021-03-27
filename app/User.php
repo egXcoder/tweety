@@ -49,17 +49,17 @@ class User extends Authenticatable
     }
 
     public static function generateUniqueId(){
-        $profile_id = rand();
+        $identifier = rand();
         
-        if(static::isProfileIdUnique($profile_id)){
-            return $profile_id;
+        if(static::isProfileIdUnique($identifier)){
+            return $identifier;
         }
 
         return static::generateUniqueId();
     }
 
-    protected static function isProfileIdUnique($profile_id){
-        return User::where('profile_id',$profile_id)->count()==0;
+    protected static function isProfileIdUnique($identifier){
+        return User::where('identifier',$identifier)->count()==0;
     }
 
     public function following(){
