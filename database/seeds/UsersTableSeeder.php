@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
             "name"=>"ahmed",
             "email"=>"ahmed@email.com",
             "password"=>'$2y$10$G4LzWaZscL1usOUtYfrgXet.MgcXqBRLiHbbpLySVn5htPveQIunG',
-            "image_url"=>"https://i.pravatar.cc/150?u=ahmed@email.com"
+            "image_url"=>"https://i.pravatar.cc/600?u=ahmed@email.com"
         ]);
 
         factory(App\User::class,50)->create();

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -45,6 +46,20 @@ class User extends Authenticatable
                         ->with(['user','impressions'])
                         ->latest()
                         ->get();
+    }
+
+    public static function generateUniqueId(){
+        $profile_id = rand();
+        
+        if(static::isProfileIdUnique($profile_id)){
+            return $profile_id;
+        }
+
+        return static::generateUniqueId();
+    }
+
+    protected static function isProfileIdUnique($profile_id){
+        return User::where('profile_id',$profile_id)->count()==0;
     }
 
     public function following(){
