@@ -6,6 +6,8 @@
     <a class="my-2 font-weight-bold text-black text-reset text-decoration-none" style="color:black;" href="">Bookmarks</a>
     <a class="my-2 font-weight-bold text-black text-reset text-decoration-none" style="color:black;" href="">Lists</a>
     <a class="my-2 font-weight-bold text-black text-reset text-decoration-none" style="color:black;" href="{{route('profile.show',auth()->user()->identifier)}}">Profile</a>
-    <a class="my-2 font-weight-bold text-black text-reset text-decoration-none" style="color:black;" href="">More</a>
-    <button class="btn btn-primary">Tweet-a-roo!</button>
+    <form action="{{route('logout')}}" method="POST">
+        @csrf
+        <button class="btn btn-primary my-1" style="width:100%">Logout</button>
+    </form>
 </div>
