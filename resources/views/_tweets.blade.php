@@ -1,4 +1,4 @@
-<div class="posts mt-4 border p-2">
+<div class="posts mt-4 border p-2 mb-4">
     @forelse($tweets as $tweet)
     <div class="tweet row no-gutters p-3">
         <div class="col-md-1">
