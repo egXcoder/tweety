@@ -81,6 +81,10 @@ class User extends Authenticatable
         return filter_var($value, FILTER_VALIDATE_URL);
     }
 
+    public function setPasswordAttribute($value){
+        return bcrypt($value);
+    }
+
     public function following()
     {
         return $this->belongsToMany(self::class, "user_followers", "user_id", "follow_user_id");
