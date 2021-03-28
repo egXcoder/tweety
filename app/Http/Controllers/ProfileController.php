@@ -40,11 +40,7 @@ class ProfileController extends Controller
     {
         $this->authorize('follow_or_unfollow',$user);
 
-        if (auth()->user()->isFollowing($user)) {
-            auth()->user()->unfollow($user);
-        } else {
-            auth()->user()->follow($user);
-        }
+        auth()->user()->following()->toggle($user);
 
         return back();
     }
