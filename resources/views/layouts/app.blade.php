@@ -22,6 +22,12 @@
         @yield('content')
     </div>
 
+    <footer class="bg-dark my-0 p-3 text-white">
+        <div class="container-fluid">
+            <p class="mb-0"><i class="fab fa-twitter"></i> Tweety Platform, Developed by <a href="https://github.com/egXcoder">Ahmed Ibrahim</a> @Copyrights 2021</p>
+        </div>
+    </footer>
+
     <script src="{{mix('js/app.js')}}"></script>
     @include('components.toastr')
 </body>
