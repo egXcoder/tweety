@@ -1,5 +1,5 @@
 <div class="posts mt-4 border p-2">
-    @foreach($tweets as $tweet)
+    @forelse($tweets as $tweet)
     <div class="tweet row no-gutters p-3">
         <div class="col-md-1">
             <a href="{{route('profile.show',$tweet->user)}}">
@@ -31,5 +31,8 @@
     @continue
     @endif
     <hr>
-    @endforeach
+
+    @empty
+        <p>No Tweets Yet!</p>   
+    @endforelse
 </div>
