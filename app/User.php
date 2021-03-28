@@ -42,7 +42,7 @@ class User extends Authenticatable
                         ->orWhere('user_id', $this->id)
                         ->with(['user','impressions'])
                         ->latest()
-                        ->get();
+                        ->paginate(20);
     }
 
     public static function generateUniqueId()

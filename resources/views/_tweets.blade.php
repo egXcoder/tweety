@@ -35,4 +35,7 @@
     @empty
         <p>No Tweets Yet!</p>   
     @endforelse
+    <div class="d-flex justify-content-center my-2">
+        {{$tweets->links()}}
+    </div>
 </div>
