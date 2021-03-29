@@ -2,7 +2,7 @@
 
 namespace App\Enum;
 
-use App\Enum\Contract\Enum;
+use MyCLabs\Enum\Enum;
 
 class ImpressionsEnum extends Enum{
     private const LIKE = 'like';

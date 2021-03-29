@@ -22,17 +22,13 @@ class Tweet extends Model
         return $this->hasMany(TweetImpression::class,"tweet_id");
     }
 
-    public function onlyImpressions($impression){
-        ImpressionsEnum::validate($impression);
-        
+    public function onlyImpressions(ImpressionsEnum $impression){
         return $this->impressions->filter(function($impressionRecord)use($impression){
             return ($impressionRecord->impression == $impression);
         });
     }
 
-    public function setImpression(User $user,$impression){
-        ImpressionsEnum::validate($impression);
-
+    public function setImpression(User $user,ImpressionsEnum $impression){
         $this->impressions()
         ->updateOrCreate([
             'user_id'=>$user->id
