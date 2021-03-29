@@ -22,10 +22,11 @@
         color:{{$colors[$impression]}}
     }
 </style>
-<form action="" class="d-inline-block">
-    <button class="d-inline-block bg-transparent border-0 {{$impression}}">
+<form action="{{route('tweets.impressions.setImpression',['tweet'=>$tweet->id])}}" method="POST" class="d-inline-block">
+    @csrf
+    <button name="impression" value="{{$impression}}" class="d-inline-block bg-transparent border-0 {{$impression}}">
         <i class="{{$icons[$impression]}} fa-2x mx-2  
-            {{($tweet->isLoggedUserImpressed(ImpressionsEnum::{strtoupper($impression)}())) ? 'active' : ''}}">
+            {{($tweet->getImpressionRecordForLoggedUser(ImpressionsEnum::{strtoupper($impression)}())) ? 'active' : ''}}">
             <span style="font-size: 1rem">
                 {{
                     $tweet->filterImpressions(ImpressionsEnum::{strtoupper($impression)}())

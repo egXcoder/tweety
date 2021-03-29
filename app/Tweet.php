@@ -28,8 +28,8 @@ class Tweet extends Model
         });
     }
 
-    public function isLoggedUserImpressed(ImpressionsEnum $impression){
-        return (bool) $this->filterImpressions($impression)
+    public function getImpressionRecordForLoggedUser(ImpressionsEnum $impression){
+        return $this->filterImpressions($impression)
             ->where('user_id',auth()->user()->id)
             ->first();
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\ImpressionsEnum;
 use App\Tweet;
 use Illuminate\Http\Request;
 
