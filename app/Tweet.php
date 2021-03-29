@@ -2,7 +2,11 @@
 
 namespace App;
 
+use App\Enum\ImpressionsEnum;
+use Exception;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 
 class Tweet extends Model
 {
@@ -19,8 +23,21 @@ class Tweet extends Model
     }
 
     public function onlyImpressions($impression){
+        ImpressionsEnum::validate($impression);
+        
         return $this->impressions->filter(function($impressionRecord)use($impression){
             return ($impressionRecord->impression == $impression);
         });
+    }
+
+    public function setImpression(User $user,$impression){
+        ImpressionsEnum::validate($impression);
+
+        $this->impressions()
+        ->updateOrCreate([
+            'user_id'=>$user->id
+        ],[
+            'impression'=>$impression
+        ]);
     }
 }

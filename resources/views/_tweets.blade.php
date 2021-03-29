@@ -14,18 +14,11 @@
             </a>
             <p style="font-size: 1rem">{{$tweet->body}}</p>
         </div>
-        <div style="font-size: 0.7rem;" class="impressions mt-4">
-            <i class="far fa-thumbs-up fa-2x active mx-2 like"><span
-                    style="font-size: 1rem">{{$tweet->onlyImpressions('like')->count() ?? 0}}</span></i>
-            <i class="far fa-thumbs-down fa-2x mx-2 dislike"><span
-                    style="font-size: 1rem">{{$tweet->onlyImpressions('dislike')->count() ?? 0}}</span></i>
-            <i class="far fa-heart fa-2x mx-2 love"><span
-                    style="font-size: 1rem">{{$tweet->onlyImpressions('love')->count() ?? 0}}</span></i>
-            <i class="far fa-laugh-beam fa-2x mx-2 laugh"><span
-                    style="font-size: 1rem">{{$tweet->onlyImpressions('laugh')->count() ?? 0}}</span></i>
-            <i class="far fa-sad-tear fa-2x mx-2 cry"><span
-                    style="font-size: 1rem">{{$tweet->onlyImpressions('cry')->count() ?? 0}}</span></i>
-        </div>
+
+        @component('components.impression-buttons',['tweet'=>$tweet])
+            
+        @endcomponent
+    
     </div>
     @if($loop->last)
     @continue
