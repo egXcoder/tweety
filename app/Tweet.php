@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
 {
+    public const MAX_NUMBER_OF_TWEETS_IN_SCREEN = 20;
+
     protected $guarded = [];
 
     public function user(){

@@ -41,7 +41,7 @@
 </header>
 
 @include('_tweets',[
-'tweets'=>$user->tweets
+'tweets'=>$user->paginateUserTweets()
 ])
 
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
     use Notifiable;
 
     /**
@@ -34,15 +35,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getFollowingTweets()
+    public function paginateUserTweets()
+    {
+        return $this->tweets()
+                ->with(['impressions'])
+                ->latest()
+                ->paginate(Tweet::MAX_NUMBER_OF_TWEETS_IN_SCREEN);
+    }
+
+    public function paginateFollowingTweets()
     {
         $friends = $this->following->pluck('id');
 
-        return Tweet::whereIn('user_id', $friends)
-                        ->orWhere('user_id', $this->id)
+        return $this->tweets()
+                        ->orWhereIn('user_id', $friends)
                         ->with(['user','impressions'])
                         ->latest()
-                        ->paginate(20);
+                        ->paginate(Tweet::MAX_NUMBER_OF_TWEETS_IN_SCREEN);
     }
 
     public static function generateUniqueId()
@@ -61,27 +70,31 @@ class User extends Authenticatable
         return User::where('identifier', $identifier)->count()==0;
     }
 
-    public function getImageUrlAttribute($value){
-        if($this->isUrl($value)){
+    public function getImageUrlAttribute($value)
+    {
+        if ($this->isUrl($value)) {
             return $value;
         }
 
         return asset("storage/$value");
     }
 
-    public function getCoverUrlAttribute($value){
-        if($this->isUrl($value)){
+    public function getCoverUrlAttribute($value)
+    {
+        if ($this->isUrl($value)) {
             return $value;
         }
 
         return asset("storage/$value");
     }
 
-    protected function isUrl($value){
+    protected function isUrl($value)
+    {
         return filter_var($value, FILTER_VALIDATE_URL);
     }
 
-    public function setPasswordAttribute($value){
+    public function setPasswordAttribute($value)
+    {
         $this->attributes['password'] =  bcrypt($value);
     }
 
@@ -97,12 +110,12 @@ class User extends Authenticatable
 
     public function isFollowing(User $user)
     {
-        return $this->following->contains($user);
+        return $this->following()->where('user_id', $this->id)->where('follow_user_id', $user->id)->exists();
     }
 
     public function isFollower(User $user)
     {
-        return $this->followers->contains($user);
+        return $this->followers()->where('user_id', $user->id)->where('follow_user_id', $this->id)->exists();
     }
 
     public function follow(User $user)
