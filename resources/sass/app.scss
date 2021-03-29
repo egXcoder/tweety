@@ -7,26 +7,11 @@ $primary : #1da1f2;
 
 
 .impressions{
-    i{
+    button{
         transition: transform 0.3s;
         cursor: pointer;
     }
-    i:hover{
+    button:hover{
         transform:translateY(-2px);
-    }
-    i.like:hover,i.active.like{
-        color:$primary;
-    }
-    i.dislike:hover,i.active.dislike{
-        color:#4c0303;
-    }
-    i.love:hover,i.active.love{
-        color:#ef3939;
-    }
-    i.laugh:hover,i.active.laugh{
-        color:#ffc107;
-    }
-    i.cry:hover,i.active.cry{
-        color:#ffc107;
     }
 }
