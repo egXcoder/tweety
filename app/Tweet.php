@@ -22,10 +22,16 @@ class Tweet extends Model
         return $this->hasMany(TweetImpression::class,"tweet_id");
     }
 
-    public function onlyImpressions(ImpressionsEnum $impression){
+    public function filterImpressions(ImpressionsEnum $impression){
         return $this->impressions->filter(function($impressionRecord)use($impression){
             return ($impressionRecord->impression == $impression);
         });
+    }
+
+    public function isLoggedUserImpressed(ImpressionsEnum $impression){
+        return (bool) $this->filterImpressions($impression)
+            ->where('user_id',auth()->user()->id)
+            ->first();
     }
 
     public function setImpression(User $user,ImpressionsEnum $impression){
