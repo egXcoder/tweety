@@ -22,7 +22,7 @@ class Tweet extends Model
 
     public function filterImpressions($impression_key)
     {
-        TweetImpression::validateImpressionKeyOrThrowException($impression_key);
+        TweetImpression::validateKeyOrThrowException($impression_key);
 
         return $this->impressions->filter(function ($impressionRecord) use ($impression_key) {
             return ($impressionRecord->impression == $impression_key);
@@ -38,7 +38,7 @@ class Tweet extends Model
 
     public function setImpression(User $user, $impression_key)
     {
-        TweetImpression::validateImpressionKeyOrThrowException($impression_key);
+        TweetImpression::validateKeyOrThrowException($impression_key);
 
         $this->impressions()
                 ->updateOrCreate(['user_id'=>$user->id], ['impression'=>$impression_key]);
