@@ -57,14 +57,12 @@ class TweetImpression extends Model
     }
 
     public static function getIconOfKey($impression_key){
-        static::validateImpressionKeyOrThrowException($impression_key);
-        
-        return static::CONSTANTS[$impression_key]['icon'];
+        return static::CONSTANTS[$impression_key]['icon'] ?? '';
     }
 
     public static function getColorOfKey($impression_key){
         static::validateImpressionKeyOrThrowException($impression_key);
 
-        return static::CONSTANTS[$impression_key]['color'];
+        return static::CONSTANTS[$impression_key]['color'] ?? '';
     }
 }
