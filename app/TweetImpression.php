@@ -61,8 +61,6 @@ class TweetImpression extends Model
     }
 
     public static function getColorOfKey($impression_key){
-        static::validateImpressionKeyOrThrowException($impression_key);
-
         return static::CONSTANTS[$impression_key]['color'] ?? '';
     }
 }
