@@ -41,6 +41,12 @@ class TweetImpression extends Model
         return $this->belongsTo(User::class, "user_id");
     }
 
+    public static function validateImpressionKeyOrThrowException($impression_key){
+        if(!static::isValidImpressionKey($impression_key)){
+            throw new \Exception("Impression key used is not valid");
+        }
+    }
+
     public static function isValidImpressionKey($impression_key){
         foreach (self::CONSTANTS as $key => $value) {
             if($key == $impression_key){
